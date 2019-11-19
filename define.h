@@ -1,0 +1,1 @@
+enum WersjaMenu {wmStandardowe, wmDrabinka};
