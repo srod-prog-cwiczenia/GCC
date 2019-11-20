@@ -4,6 +4,7 @@
 #include <list>
 #include <iostream>
 #include <sstream>
+#include <unistd.h>
 #include "ncurses.h"
 
 using namespace std;
