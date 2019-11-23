@@ -6,6 +6,7 @@
 #include "przykladoweKonstrukcjeCPP.h"
 #include "biblioteczneFunkcje.h"
 #include "menuClass.h"
+#include "przyklady2.h"
 
 using namespace std;
 //--------------- Przeciazanie operatorow 
@@ -269,6 +270,7 @@ void przykladoweKonstrukcjeCPP() {
     menu1->Opcja("Obsluga list");
     menu1->Opcja("Szablony, przeciazanie operatorow, et cetera");
     menu1->Opcja("Uruchomienie polecenie (ls -la) i przechwycenie jego odpowiedzi");
+    menu1->Opcja("Lambda funkcje");
 
     menu1->OpcjaWyjscia("Wyjscie");
   
@@ -287,6 +289,9 @@ void przykladoweKonstrukcjeCPP() {
       case 3:
         uruchomieniePoleceniaPrzyklad(); 
         break;
+      case 4:
+        Przyklady2::lambdaFunkcje();
+	break;
     } 
        
     delete menu1;

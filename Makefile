@@ -7,6 +7,7 @@ OBJ =\
 	obslugaEkranu.o\
 	zliczanieCzasu.o\
 	acsPrzyklad.o\
+	przyklady2.o\
 	przykladoweKonstrukcjeCPP.o\
 	WyswietlanieUptime.o\
 	Zegar.o\
