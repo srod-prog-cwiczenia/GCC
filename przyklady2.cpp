@@ -13,15 +13,15 @@ using namespace std;
 //----------------------------------------------------------------
 void Przyklady2::lambdaFunkcje1() {
   endwin();  // Powrot do zwyklego trybu 'cooked' :)
-  cout << "W tej konfiguracji programu obsluga lambda funkcji nie zostala zaimplementowana." << endl;
+  //cout << "W tej konfiguracji programu obsluga lambda funkcji nie zostala zaimplementowana." << endl;
   
-/*  auto funkcja = [] (int a)->int {
+  auto funkcja = [] (int a)->int {
     return a * a;
-  };*/
-  //for (int i = 1; i <= 10; i++)
-   // cout << /*funkcja*/ (i) << " ";
-  //cout << endl;
-  //cout << __cplusplus << endl;
+  };
+  for (int i = 1; i <= 10; i++)
+    cout << funkcja (i) << " ";
+  cout << endl;
+  cout << __cplusplus << endl;
   
   std::cout << "\nPodaj jakikolwiek JEDEN znak aby aby zakonczyc... (np 'w' <Enter>)";
   char cc;
