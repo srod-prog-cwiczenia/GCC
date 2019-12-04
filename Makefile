@@ -1,6 +1,8 @@
 CC=g++
 CFLAGS = # tutaj mozna dodawac flagi kompilatora
 LIBS = -lncurses # tutaj mozna dodawać biblioteki
+#### trzeba uporzadkowac opcje, bo te powyzej sa specyficzne dla tego
+#### pliku a te ponizej stadardowe dla Makefile uzytego dla C++
 CXX = g++
 CXXFLAGS = -Wall -std=c++17 $(DEBUG)
 CPPFLAGS += # pre-processor flags, for include paths etc.
