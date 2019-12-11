@@ -119,7 +119,42 @@ void Przyklady2::wbudowaneStale() {
   cout << "Stała __cplusplus: " << __cplusplus << endl;
 }
 //----------------------------------------------------------------
-void Przyklady2::lambdaFunkcje() {
+void Przyklady2::konstrucjaPointerToMember() {
+  endwin();  // Powrot do zwyklego trybu 'cooked' :)
+  cout << "Prezentacja konstrukcji pointer to member:\n";
+
+  class KlasaPTM {
+    public:
+      void funkcja1() { cout << "Jestem funkcja 1\n"; }
+      int nr;
+  };
+
+  void (KlasaPTM::*ptr_f)() = &KlasaPTM::funkcja1;
+  int KlasaPTM::*ptr_nr = &KlasaPTM::nr;
+
+  KlasaPTM lPTM;
+  KlasaPTM *ptrPTM = new KlasaPTM();
+
+// jak dostać się do funkcji "pointer-to-member"?
+  (lPTM.*ptr_f)();
+  (ptrPTM->*ptr_f)();   // tu sa konieczne nawiasy jak widac...
+
+// jak dostać się do zmiennych typu "pointer-to-member"?
+  lPTM.*ptr_nr = 1;
+  ptrPTM->*ptr_nr = 2;
+
+  cout << lPTM.*ptr_nr << endl << ptrPTM->*ptr_nr << endl;
+  delete ptrPTM;
+
+  std::cout << "\nPodaj jakikolwiek JEDEN znak aby aby zakonczyc... (np 'w' <Enter>)";
+  char cc;
+  std::cin >> cc; 
+    
+  doupdate(); // Z powrotem do ncurses
+  curs_set(false);
+}
+//----------------------------------------------------------------
+void Przyklady2::przykladyNaPracownie() {
   int wybor1 = -1;
 
   do {
@@ -129,6 +164,7 @@ void Przyklady2::lambdaFunkcje() {
 //TODO: stworzyc oddzielne menu na zadania ze wskaznikow:
     menu1->Opcja("Zadania ze wskaznikow - suma i tabliczka mnozenia przez wskazniki");
     menu1->Opcja("Zadania ze wskaznikow - test wskaznikow na funkcje");
+    menu1->Opcja("Konstrukcja typu pointer-to-member");
     menu1->OpcjaWyjscia("Wyjscie");
     menu1->ustawienieWersji(wmDrabinka);  
     wybor1 = menu1->Run();
@@ -142,6 +178,9 @@ void Przyklady2::lambdaFunkcje() {
         break;
       case 2: 
         WskaznikiPrzyklady2::wskaznikiNaFunkcje(); 
+        break;
+      case 3:
+        konstrucjaPointerToMember();
         break;
     } 
        

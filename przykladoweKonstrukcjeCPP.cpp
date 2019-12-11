@@ -270,7 +270,7 @@ void przykladoweKonstrukcjeCPP() {
     menu1->Opcja("Obsluga list");
     menu1->Opcja("Szablony, przeciazanie operatorow, et cetera");
     menu1->Opcja("Uruchomienie polecenie (ls -la) i przechwycenie jego odpowiedzi");
-    menu1->Opcja("Rozwiazania zadan i przyklady do C++ wersja >= 11 (Lambda funkcje, auto, itd)");
+    menu1->Opcja("Rozwiazania zadan i przyklady do C++ wersja >= 11 (Lambda funkcje, auto, PTM, itd)");
 
     menu1->OpcjaWyjscia("Wyjscie");
     menu1->ustawienieWersji(wmDrabinka);  
@@ -290,7 +290,7 @@ void przykladoweKonstrukcjeCPP() {
         uruchomieniePoleceniaPrzyklad(); 
         break;
       case 4:
-        Przyklady2::lambdaFunkcje();
+        Przyklady2::przykladyNaPracownie();
 	break;
     } 
        
