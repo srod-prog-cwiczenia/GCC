@@ -1,4 +1,5 @@
 #include <string>
+#include <vector>
 
 using namespace std;
 /* Wyrzuca na ekran zawartosc lancucha, znak po znaku, podaje tez kody ASCII */
@@ -20,3 +21,7 @@ bool istniejePlik (const char* nazwaPliku);
 
 /* Uruchamia proces i zwraca jego wynik. */
 string uruchomieniePolecenia(string polecenie);
+
+/* Rozdziela lancuch na czesci */
+vector<string> lancuch2Vector(const string &lancuch, char separator = '\n');
+

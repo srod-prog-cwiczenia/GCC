@@ -270,7 +270,9 @@ void przykladoweKonstrukcjeCPP() {
     menu1->Opcja("Obsluga list");
     menu1->Opcja("Szablony, przeciazanie operatorow, et cetera");
     menu1->Opcja("Uruchomienie polecenie (ls -la) i przechwycenie jego odpowiedzi");
-    menu1->Opcja("Rozwiazania zadan i przyklady do C++ wersja >= 11 (Lambda funkcje, auto, PTM, itd)");
+//    menu1->Opcja("Rozwiazania zadan i przyklady do C++ wersja >= 11 (Lambda funkcje, auto, PTM, itd)"); //TODO: czasami na niektorych ekranach to jest za dlugi napis, jak z tym sobie poradzic?
+//pewnie trzeba podzielic opis na wiecej linijek
+    menu1->Opcja("Rozwiazania zadan i przyklady do C++ wersja >= 11");
 
     menu1->OpcjaWyjscia("Wyjscie");
     menu1->ustawienieWersji(wmDrabinka);  

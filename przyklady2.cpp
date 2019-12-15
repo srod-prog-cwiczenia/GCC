@@ -5,6 +5,7 @@
 
 #include "przyklady2.h"
 #include "biblioteczneFunkcje.h"
+#include "biblioteczneEkran.h"
 #include "menuClass.h"
 
 using namespace std;
@@ -15,7 +16,7 @@ class WskaznikiPrzyklady2 {
 	   return txt + ".";
         }; 
 	static void zadanieZeWskaznikow() {
-                endwin();  // Powrot do zwyklego trybu 'cooked' :)
+                OknoAplikacji::powrotDoTrybuTekstowego();  // Powrot do zwyklego trybu 'cooked' :)
 
 		int tab[] = { 1,2,3,10 };
 		//przesumować zawartosc tej tablicy za pomoca wskaznikow
@@ -53,14 +54,10 @@ class WskaznikiPrzyklady2 {
 				cout << tM[i][j] << " ";
 			}	
 		}
-                std::cout << "\nPodaj jakikolwiek JEDEN znak aby aby zakonczyc... (np 'w' <Enter>)";
-                char cc;
-                std::cin >> cc; 
-                doupdate(); // Z powrotem do ncurses
-                curs_set(false);
-	}
+                OknoAplikacji::powrotDoNCurses(true);
+        }
 	static void wskaznikiNaFunkcje() {
-                endwin();  // Powrot do zwyklego trybu 'cooked' :)
+                OknoAplikacji::powrotDoTrybuTekstowego();  // Powrot do zwyklego trybu 'cooked' :)
 
 		string (*formatZ)(string);
 		string(*formatZ2)(string);
@@ -70,18 +67,13 @@ class WskaznikiPrzyklady2 {
 //TODO: z obslugi zwiazanej z ncurses najlepiej zrobic jakas warstwe,
 // tymczasem mozna przeniesc te powtarzajace sie sekwencje do jednej metody (w zasadzie dwoch, patrz 
 // poczatek tej metody :) 
-		std::cout << "\nPodaj jakikolwiek JEDEN znak aby aby zakonczyc... (np 'w' <Enter>)";
-                char cc;
-                std::cin >> cc; 
-                doupdate(); // Z powrotem do ncurses
-                curs_set(false);
-
+                OknoAplikacji::powrotDoNCurses(true);
 	}
 };
 
 //----------------------------------------------------------------
 void Przyklady2::lambdaFunkcje1() {
-  endwin();  // Powrot do zwyklego trybu 'cooked' :)
+  OknoAplikacji::powrotDoTrybuTekstowego();  // Powrot do zwyklego trybu 'cooked' :)
   //cout << "W tej konfiguracji programu obsluga lambda funkcji nie zostala zaimplementowana." << endl;
   cout << "Funkcja lambda liczaca kwadraty:\n";
   auto funkcja = [] (int a)->int {
@@ -106,13 +98,7 @@ void Przyklady2::lambdaFunkcje1() {
      };
   f2();
   cout << "Po wyjsciu z funkcji f2 (teraz uzyto modyfikator mutable): " << aa << ' ' << bb << endl;
-
-  std::cout << "\nPodaj jakikolwiek JEDEN znak aby aby zakonczyc... (np 'w' <Enter>)";
-  char cc;
-  std::cin >> cc; 
-    
-  doupdate(); // Z powrotem do ncurses
-  curs_set(false);
+  OknoAplikacji::powrotDoNCurses(true);
 }
 //-----------------------------------------------------------
 void Przyklady2::wbudowaneStale() {
@@ -120,7 +106,7 @@ void Przyklady2::wbudowaneStale() {
 }
 //----------------------------------------------------------------
 void Przyklady2::konstrucjaPointerToMember() {
-  endwin();  // Powrot do zwyklego trybu 'cooked' :)
+  OknoAplikacji::powrotDoTrybuTekstowego();  // Powrot do zwyklego trybu 'cooked' :)
   cout << "Prezentacja konstrukcji pointer to member:\n";
 
   class KlasaPTM {
@@ -146,12 +132,7 @@ void Przyklady2::konstrucjaPointerToMember() {
   cout << lPTM.*ptr_nr << endl << ptrPTM->*ptr_nr << endl;
   delete ptrPTM;
 
-  std::cout << "\nPodaj jakikolwiek JEDEN znak aby aby zakonczyc... (np 'w' <Enter>)";
-  char cc;
-  std::cin >> cc; 
-    
-  doupdate(); // Z powrotem do ncurses
-  curs_set(false);
+  OknoAplikacji::powrotDoNCurses(true);
 }
 //----------------------------------------------------------------
 void Przyklady2::przykladyNaPracownie() {

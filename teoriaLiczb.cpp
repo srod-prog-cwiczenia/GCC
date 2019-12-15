@@ -67,7 +67,15 @@ void liczbyWiefericha() {
   int xcent = getmaxx(biezace_okno) / 2;
   int ycent = getmaxy(biezace_okno) / 2;
 
-  string tresc = "Prosze podac do jakiej liczby przeszukiwac?\n";
+/*  const string tresc = R"(
+    "Liczba pierwsza p jest liczba Wiefericha gdy p * p dzieli 2^{p - 1} - 1\n" 
+    "Znane sa na razie tylko dwie takie liczby : 1093 i 3511.\n"
+    "Prosze podac do jakiej liczby przeszukiwac?\n"
+  )"; */ 
+//R oznacza literalne traktowanie lancucha? W kazdym razie to
+//powoduje ze na ekranie pojawia sie \n zamiast wysuwu linii - zapewne trzeba je usunac
+//TODO: napisac rozdzielenie lancucha i rozmieszczenie go na ekranie (split)
+  const string tresc = "Prosze podac do jakiej liczby przeszukiwac?\n";
   mvaddstr(ycent, xcent - tresc.length() / 2, tresc.c_str());
 
   echo();

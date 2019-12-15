@@ -96,3 +96,13 @@ bool istniejePlik (const char* nazwaPliku) {
   return  stat(nazwaPliku, &buf) ? false : true;
 }
 //-------------------------------------------------------
+vector<string> lancuch2Vector(const string &lancuch, char separator) {
+  vector<string> kawalkiV;
+  string kawalek;
+  istringstream strumienLancuchowy(kawalek);
+  while (getline(strumienLancuchowy, kawalek, separator)) {
+    kawalkiV.push_back(kawalek);
+  }
+  return kawalkiV;
+}
+//-------------------------------------------------------

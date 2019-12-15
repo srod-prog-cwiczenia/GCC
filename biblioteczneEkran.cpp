@@ -1,4 +1,5 @@
 #include <ncurses.h>
+#include <iostream>
 #include "biblioteczneEkran.h"
 
 //--------------------------
@@ -72,6 +73,19 @@ void OknoAplikacji::ramka(int x1, int  y1, int x2, int y2) {
   }
 }
 //--------------------------------
-
+void OknoAplikacji::powrotDoTrybuTekstowego() {
+  endwin();
+}
+//--------------------------------
+void OknoAplikacji::powrotDoNCurses(bool zZatrzymaniemP) {
+  if (zZatrzymaniemP) {
+    std::cout << "\nPodaj jakikolwiek JEDEN znak aby aby zakonczyc... (np 'w' <Enter>)";
+    char cc;
+    std::cin >> cc; 
+  }
+  doupdate(); // Z powrotem do ncurses
+  curs_set(false);
+}
+//--------------------------------
 
 
