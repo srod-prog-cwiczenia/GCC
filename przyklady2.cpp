@@ -2,6 +2,7 @@
 #include <iostream>
 #include <list>
 #include <string>
+#include <memory>
 
 #include "przyklady2.h"
 #include "biblioteczneFunkcje.h"
@@ -14,7 +15,7 @@ class WskaznikiPrzyklady2 {
     public:
         static string format(string txt) {
 	   return txt + ".";
-        }; 
+        };
 	static void zadanieZeWskaznikow() {
                 OknoAplikacji::powrotDoTrybuTekstowego();  // Powrot do zwyklego trybu 'cooked' :)
 
@@ -39,7 +40,7 @@ class WskaznikiPrzyklady2 {
 		for (int i = 0; i < 10; i++)
 			delete tabP[i];
 // za pomoca wskaznikow wypelnic tablice
-		// int tM[10][10]; 
+		// int tM[10][10];
 		// iloczynami indeksow
 		int tM[10][10];
 		int *wI = (int *)tM;
@@ -52,7 +53,7 @@ class WskaznikiPrzyklady2 {
 		for (int i = 0; i < 10; i++,cout<<endl) {
 			for (int j = 0; j < 10; j++) {
 				cout << tM[i][j] << " ";
-			}	
+			}
 		}
                 OknoAplikacji::powrotDoNCurses(true);
         }
@@ -65,8 +66,8 @@ class WskaznikiPrzyklady2 {
 		formatZ2 = formatZ;
 		cout << formatZ2("Ala");
 //TODO: z obslugi zwiazanej z ncurses najlepiej zrobic jakas warstwe,
-// tymczasem mozna przeniesc te powtarzajace sie sekwencje do jednej metody (w zasadzie dwoch, patrz 
-// poczatek tej metody :) 
+// tymczasem mozna przeniesc te powtarzajace sie sekwencje do jednej metody (w zasadzie dwoch, patrz
+// poczatek tej metody :)
                 OknoAplikacji::powrotDoNCurses(true);
 	}
 };
@@ -89,9 +90,9 @@ void Przyklady2::lambdaFunkcje1() {
      bb++;};
   f1();
   cout << "Po wyjsciu z funkcji f1: " << aa << ' ' << bb << endl;
-  //++++ to samo ale mutable:  
+  //++++ to samo ale mutable:
   aa = 7, bb = 13;
-  auto f2 = [ aa, & bb ]()mutable->void 
+  auto f2 = [ aa, & bb ]()mutable->void
     {aa++; // mutable wiec mozemy ja zwiekszyc ale to nadal kopia lokalna
      bb++;
      cout << "W funkcji f2 (teraz uzyto modyfikator mutable): " << aa << ' ' << bb << endl;
@@ -135,6 +136,39 @@ void Przyklady2::konstrucjaPointerToMember() {
   OknoAplikacji::powrotDoNCurses(true);
 }
 //----------------------------------------------------------------
+ //autoklasa rejestrująca powstawanie i usuwanie swoich instancji
+ //TODO: przeniesc to do osobnego modulu.
+class KlasaRejestrujaca {
+   public:
+     static unsigned int biezacyIdentyfikator;
+   private:
+     int identyfikator;
+   public:
+     KlasaRejestrujaca() : identyfikator(++biezacyIdentyfikator) {
+       cout << "Tworze instancje klasy KlasaRejestrujaca o unikalnym "
+       << "numerze identyfikacyjnym: " << identyfikator << endl;
+     }
+     ~KlasaRejestrujaca() {
+       cout << "Usuwam instancje klasy KlasaRejestrujaca o unikalnym "
+       << "numerze identyfikacyjnym: " << identyfikator << endl;
+     }
+     void metoda() {
+       cout << "Wywołanie metody metoda() dla obiektu"
+         << " o numerze identyfikacyjnym: " << identyfikator << endl;
+     }
+};
+unsigned int KlasaRejestrujaca::biezacyIdentyfikator = 0;
+//----------------------------------------------------------------
+void Przyklady2::autowskazniki() {
+  OknoAplikacji::powrotDoTrybuTekstowego();
+  { /*dodatkowy blok aby autousuniecie wskaznika uPtr
+  odbylo sie jeszcze przez powrotem do NCurses. */
+    unique_ptr<KlasaRejestrujaca> uPtr(new KlasaRejestrujaca);
+    uPtr->metoda();
+  }
+  OknoAplikacji::powrotDoNCurses(true);
+}
+//----------------------------------------------------------------
 void Przyklady2::przykladyNaPracownie() {
   int wybor1 = -1;
 
@@ -146,25 +180,29 @@ void Przyklady2::przykladyNaPracownie() {
     menu1->Opcja("Zadania ze wskaznikow - suma i tabliczka mnozenia przez wskazniki");
     menu1->Opcja("Zadania ze wskaznikow - test wskaznikow na funkcje");
     menu1->Opcja("Konstrukcja typu pointer-to-member");
+    menu1->Opcja("Autowskazniki");
     menu1->OpcjaWyjscia("Wyjscie");
-    menu1->ustawienieWersji(wmDrabinka);  
+    menu1->ustawienieWersji(wmDrabinka);
     wybor1 = menu1->Run();
 
     switch (wybor1) {
       case 0:
         lambdaFunkcje1();
         break;
-      case 1: 
-        WskaznikiPrzyklady2::zadanieZeWskaznikow(); 
+      case 1:
+        WskaznikiPrzyklady2::zadanieZeWskaznikow();
         break;
-      case 2: 
-        WskaznikiPrzyklady2::wskaznikiNaFunkcje(); 
+      case 2:
+        WskaznikiPrzyklady2::wskaznikiNaFunkcje();
         break;
       case 3:
         konstrucjaPointerToMember();
         break;
-    } 
-       
+      case 4:
+        autowskazniki();
+        break;
+    }
+
     delete menu1;
   } while (wybor1 != -1);
 }
