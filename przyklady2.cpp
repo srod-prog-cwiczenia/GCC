@@ -181,6 +181,14 @@ void Przyklady2::przykladyNaPracownie() {
     menu1->Opcja("Zadania ze wskaznikow - test wskaznikow na funkcje");
     menu1->Opcja("Konstrukcja typu pointer-to-member");
     menu1->Opcja("Autowskazniki");
+/*    menu1->dodajWieleOpcji(5,
+      "Lambda funkcje 1",
+      "Zadania ze wskaznikow - suma i tabliczka mnozenia przez wskazniki",
+      "Zadania ze wskaznikow - test wskaznikow na funkcje",
+      "Konstrukcja typu pointer-to-member",
+      "Autowskazniki"
+    );*/
+//TODO - nie wiem czemu uzycie dodajWieleOpcji ,,produkuje'' puste menu ,,drabinkowe''
     menu1->OpcjaWyjscia("Wyjscie");
     menu1->ustawienieWersji(wmDrabinka);
     wybor1 = menu1->Run();

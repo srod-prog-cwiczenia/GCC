@@ -13,12 +13,13 @@
 #include "biblioteczneEkran.h"
 #include "biblioteczneFunkcje.h"
 #include "menuClass.h"
+#include "Testy.h"
 //-----------------------------------
 
 void pokaz_w_kolorze() {
  /* if (!OknoAplikacji::startTrybKolorowy()) {
     return;
-  }*/ // Teraz jest zbedne bo startTrybKolorowy jest wykonywane zaraz na poczatku programu.  
+  }*/ // Teraz jest zbedne bo startTrybKolorowy jest wykonywane zaraz na poczatku programu.
 
   init_pair(1, COLOR_RED, COLOR_BLACK);
   init_pair(2, COLOR_GREEN, COLOR_BLUE);
@@ -41,7 +42,7 @@ void pokaz_w_kolorze() {
   init_pair(1, COLOR_MAGENTA, COLOR_BLACK);
   init_pair(2, COLOR_YELLOW, COLOR_CYAN);
 
-  mvaddstr(3, 1, "Wcisnij 'w' aby wyjsc              ");  
+  mvaddstr(3, 1, "Wcisnij 'w' aby wyjsc              ");
 
   while (getch() != 'w') {};
 }
@@ -64,14 +65,14 @@ void proba_bold_oraz_F1() {
 void pokazEkran() {
   OknoAplikacji *okno = new OknoAplikacji();
   int wybor = -1;
-  
+
   do {
     erase();
     okno->winieta();
     MenuClass *menu1 = new MenuClass();
     menu1->Opcja("Przyklady do obslugi ekranu");
     menu1->Opcja("Analiza wsteczna");
-    menu1->Opcja("Inne rzeczy, jeszcze nie uporzadkowane");  
+    menu1->Opcja("Inne rzeczy, jeszcze nie uporzadkowane");
     menu1->Opcja("Opcja pusta");
     menu1->Opcja("Przyklady do konstrukcji w C++");
     menu1->Opcja("Opcje zwiazane z obsluga czasu.");
@@ -92,7 +93,7 @@ void pokazEkran() {
         menu0->Opcja("Pokaz znaki ACS");
 
         menu0->OpcjaWyjscia("Wyjscie");
-       
+
         int wybor0 = menu0->Run();
 
         switch (wybor0) {
@@ -113,8 +114,8 @@ void pokazEkran() {
             clear();
             pokazACS();
             break;
-        } 
-        
+        }
+
         delete menu0;
 	break;
       }
@@ -138,12 +139,13 @@ void pokazEkran() {
             mvaddstr(miejsce++, 0, "Procedurka zliczanie czasu.");
             zliczanieCzasu();
           }
-        } while (cc != KEY_F(2)) ; 
+        } while (cc != KEY_F(2)) ;
         break;
       }
 
-      case 3: 
-        dummy();
+      case 3:
+        Testy::probaMenuZWielokrotnymiOpcjami();
+        //dummy();
         break;
     /* Without keypad enabled this will */
   /*  not get to us either*/
@@ -160,7 +162,7 @@ void pokazEkran() {
         menu2->Opcja("Wyswietlanie uptime");
         menu2->Opcja("Wyswietlanie czasu");
         menu2->OpcjaWyjscia("Wyjscie");
-       
+
         int wybor2 = menu2->Run();
 
         switch (wybor2) {
@@ -170,8 +172,8 @@ void pokazEkran() {
           case 1:
             wyswietlanieCzasu();
             break;
-        } 
-        
+        }
+
         delete menu2;
         break;
       }
@@ -186,7 +188,7 @@ void pokazEkran() {
           menu6->Opcja("Teoria liczb");
           menu6->Opcja("Ulam");
           menu6->OpcjaWyjscia("Wyjscie");
-       
+
           wybor6 = menu6->Run();
 
           switch (wybor6) {
@@ -195,12 +197,12 @@ void pokazEkran() {
               break;
             case 1:
               teoriaLiczbMain();
-              break;  
+              break;
             case 2:
               funkcjaUlam();
               break;
-          } 
-        
+          }
+
           delete menu6;
         } while (wybor6 != -1);
         break;

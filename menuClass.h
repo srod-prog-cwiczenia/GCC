@@ -10,9 +10,10 @@ public:
   MenuClass();
   void Opcja(string opcja);
   ~MenuClass();
-  int Run();  
+  int Run();
   void OpcjaWyjscia(string opcja);
   void ustawienieWersji(WersjaMenu wersja);
+  void dodajWieleOpcji(int ile, char* p...);
 private:
   typedef list<string> listaLancuchow;
   listaLancuchow *lista;

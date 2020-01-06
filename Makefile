@@ -25,7 +25,8 @@ OBJ =\
 	biblioteczneEkran.o\
 	biblioteczneFunkcje.o\
 	dwa_cztery_siedem.o\
-	menuClass.o
+	menuClass.o\
+	Testy.o
 
 all: main
 
