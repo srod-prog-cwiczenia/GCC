@@ -73,7 +73,7 @@ void pokazEkran() {
     menu1->Opcja("Przyklady do obslugi ekranu");
     menu1->Opcja("Analiza wsteczna");
     menu1->Opcja("Inne rzeczy, jeszcze nie uporzadkowane");
-    menu1->Opcja("Opcja pusta");
+    menu1->Opcja("Opcja testowa (tymczasowe)");
     menu1->Opcja("Przyklady do konstrukcji w C++");
     menu1->Opcja("Opcje zwiazane z obsluga czasu.");
     menu1->Opcja("Rozne narzedzia");

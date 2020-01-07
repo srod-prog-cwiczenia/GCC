@@ -1,7 +1,7 @@
 #include "ncurses.h"
 #include <sstream>
 #include <list>
-#include <cstdarg>
+#include <stdarg.h>
 
 #include "menuClass.h"
 

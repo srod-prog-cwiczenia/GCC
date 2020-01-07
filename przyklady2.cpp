@@ -17,8 +17,7 @@ class WskaznikiPrzyklady2 {
 	   return txt + ".";
         };
 	static void zadanieZeWskaznikow() {
-                OknoAplikacji::powrotDoTrybuTekstowego();  // Powrot do zwyklego trybu 'cooked' :)
-
+        OknoAplikacji::powrotDoTrybuTekstowego();  // Powrot do zwyklego trybu 'cooked' :)
 		int tab[] = { 1,2,3,10 };
 		//przesumować zawartosc tej tablicy za pomoca wskaznikow
 		int suma = 0;
@@ -55,10 +54,10 @@ class WskaznikiPrzyklady2 {
 				cout << tM[i][j] << " ";
 			}
 		}
-                OknoAplikacji::powrotDoNCurses(true);
-        }
+        OknoAplikacji::powrotDoNCurses(true);
+    }
 	static void wskaznikiNaFunkcje() {
-                OknoAplikacji::powrotDoTrybuTekstowego();  // Powrot do zwyklego trybu 'cooked' :)
+        OknoAplikacji::powrotDoTrybuTekstowego();  // Powrot do zwyklego trybu 'cooked' :)
 
 		string (*formatZ)(string);
 		string(*formatZ2)(string);
@@ -68,7 +67,7 @@ class WskaznikiPrzyklady2 {
 //TODO: z obslugi zwiazanej z ncurses najlepiej zrobic jakas warstwe,
 // tymczasem mozna przeniesc te powtarzajace sie sekwencje do jednej metody (w zasadzie dwoch, patrz
 // poczatek tej metody :)
-                OknoAplikacji::powrotDoNCurses(true);
+        OknoAplikacji::powrotDoNCurses(true);
 	}
 };
 

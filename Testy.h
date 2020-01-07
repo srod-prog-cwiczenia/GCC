@@ -7,6 +7,7 @@ class Testy
     public:
         Testy();
         virtual ~Testy();
+        static void dodajWieleOpcji(int ile, char *p...);
         static void probaMenuZWielokrotnymiOpcjami();
     protected:
 
