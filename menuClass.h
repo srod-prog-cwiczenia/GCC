@@ -16,7 +16,7 @@ public:
   void dodajWieleOpcji(int ile, char* p...);
 private:
   typedef list<string> listaLancuchow;
-  listaLancuchow *lista;
+  listaLancuchow lista;
 
   int getMaxDlugoscOpcji();
   void ramkaWokolMenu();

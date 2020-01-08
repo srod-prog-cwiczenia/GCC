@@ -26,7 +26,8 @@ OBJ =\
 	biblioteczneFunkcje.o\
 	dwa_cztery_siedem.o\
 	menuClass.o\
-	Testy.o
+	Testy.o\
+	Opis.o
 
 all: main
 

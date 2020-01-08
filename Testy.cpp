@@ -7,6 +7,7 @@
 #include "biblioteczneFunkcje.h"
 #include "biblioteczneEkran.h"
 #include "menuClass.h"
+#include "Opis.h"
 
 Testy::Testy()
 {
@@ -18,7 +19,6 @@ Testy::~Testy()
     //dtor
 }
 void Testy::dodajWieleOpcji(int ile, char *p...) {
-    OknoAplikacji::powrotDoTrybuTekstowego();  // Powrot do zwyklego trybu 'cooked' :)
     va_list vl;
 	va_start(vl, ile);
 	for (int liczba = 0; liczba < ile; liczba++) {
@@ -26,9 +26,20 @@ void Testy::dodajWieleOpcji(int ile, char *p...) {
 		cout << (string)lancuch << endl;
 	}
 	va_end(vl);
-    OknoAplikacji::powrotDoNCurses(true);
 }
-
+//--------------------------
+void Testy::dodajWieleOpcji2(int ile, char *p...) {
+  dodajWieleOpcji(ile, "", p);
+}
+//--------------------------
 void Testy::probaMenuZWielokrotnymiOpcjami() {
-  dodajWieleOpcji(3, "Jeden", "Dwa", "Trzy");
+  OknoAplikacji::powrotDoTrybuTekstowego();  // Powrot do zwyklego trybu 'cooked' :)
+  dodajWieleOpcji(3, "", "Jeden", "Dwa", "Trzy");
+  dodajWieleOpcji2(3, "Jeden", "Dwa", "Trzy"); //to nie dziala poprawnie jak przypuszczalnie powinno
+  OknoAplikacji::powrotDoNCurses(true);
+}
+//--------------------------
+void Testy::opcjaTestowa() {
+  Opis oo("uno|dos|tres");
+  oo.dumpWierszeNaEkran();
 }

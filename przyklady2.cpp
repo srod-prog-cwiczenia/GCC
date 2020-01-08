@@ -174,19 +174,21 @@ void Przyklady2::przykladyNaPracownie() {
   do {
     erase();
     MenuClass *menu1 = new MenuClass();
-    menu1->Opcja("Lambda funkcje 1");
+//    menu1->Opcja("Lambda funkcje 1");
 //TODO: stworzyc oddzielne menu na zadania ze wskaznikow:
-    menu1->Opcja("Zadania ze wskaznikow - suma i tabliczka mnozenia przez wskazniki");
-    menu1->Opcja("Zadania ze wskaznikow - test wskaznikow na funkcje");
-    menu1->Opcja("Konstrukcja typu pointer-to-member");
-    menu1->Opcja("Autowskazniki");
-/*    menu1->dodajWieleOpcji(5,
+//    menu1->Opcja("Zadania ze wskaznikow - suma i tabliczka mnozenia przez wskazniki");
+//    menu1->Opcja("Zadania ze wskaznikow - test wskaznikow na funkcje");
+//    menu1->Opcja("Konstrukcja typu pointer-to-member");
+//    menu1->Opcja("Autowskazniki");
+    menu1->dodajWieleOpcji(5,
+      "", //TODO: z jakis powodow musi byc tu pusty
+      // lancuch bo inaczej nie dziala - patrz tez klasa Testy.
       "Lambda funkcje 1",
       "Zadania ze wskaznikow - suma i tabliczka mnozenia przez wskazniki",
       "Zadania ze wskaznikow - test wskaznikow na funkcje",
       "Konstrukcja typu pointer-to-member",
       "Autowskazniki"
-    );*/
+    );
 //TODO - nie wiem czemu uzycie dodajWieleOpcji ,,produkuje'' puste menu ,,drabinkowe''
     menu1->OpcjaWyjscia("Wyjscie");
     menu1->ustawienieWersji(wmDrabinka);

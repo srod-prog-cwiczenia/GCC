@@ -144,7 +144,8 @@ void pokazEkran() {
       }
 
       case 3:
-        Testy::probaMenuZWielokrotnymiOpcjami();
+        //Testy::probaMenuZWielokrotnymiOpcjami();
+        Testy::opcjaTestowa();
         //dummy();
         break;
     /* Without keypad enabled this will */

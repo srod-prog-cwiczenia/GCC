@@ -9,7 +9,6 @@
 MenuClass::MenuClass() {
   liczbaOpcji = 0;
   nrOpcjiWyjscia = -1;  // Na poczatku nie masz takowej :)
-  lista = new listaLancuchow();
   wersjaMenu = wmStandardowe;
 }
 //--------------------------------
@@ -25,7 +24,7 @@ void MenuClass::Opcja(string opcja) {
   linijka += " ";
   linijka += opcja;
 
-  lista->push_back(linijka);
+  lista.push_back(linijka);
   liczbaOpcji++;
   //  mvaddstr(liczbaOpcji++ * 2, 0, linijka.c_str());
 }
@@ -36,7 +35,7 @@ void MenuClass::OpcjaWyjscia(string opcja) {
   linijka += opcja;
   nrOpcjiWyjscia = liczbaOpcji;
 
-  lista->push_back(linijka);
+  lista.push_back(linijka);
   liczbaOpcji++;
   //  mvaddstr(liczbaOpcji++ * 2, 0, linijka.c_str());
 }
@@ -44,10 +43,14 @@ void MenuClass::OpcjaWyjscia(string opcja) {
 int MenuClass::getMaxDlugoscOpcji() {
   int odp = -1; // Nie wiem czy tak moze zostac, ale jesli w ogole nie ma opcji to -1
 
-  listaLancuchow::iterator it;
+/*  listaLancuchow::iterator it;
+  for (it = lista.begin() ; it != lista.end() ; it++) {
+    int len = it->length();
+    odp = odp > len ? odp : len;
+  }*/ // stara wersja petli
 
-  for (it = lista->begin() ; it != lista->end() ; it++) {
-    int len = (*it).length();
+  for (auto txt : lista) {
+    int len = txt.length();
     odp = odp > len ? odp : len;
   }
 
@@ -55,7 +58,7 @@ int MenuClass::getMaxDlugoscOpcji() {
 }
 //--------------------------------
 MenuClass::~MenuClass() {
-  delete lista;
+
 }
 //--------------------------------
 bool MenuClass::dobryZnak(int znak) {
@@ -127,12 +130,13 @@ void MenuClass::wyswietlenie() {
   int xcent = getmaxx(stdscr) / 2;
   int ycent = getmaxy(stdscr) / 2;
 
-  listaLancuchow::iterator it;
+//  listaLancuchow::iterator it;
   int nrPom = 0;
   int xx = getMaxDlugoscOpcji();
 
-  for (it = lista->begin() ; it != lista->end() ; it++) {
-    mvaddstr(nrPom++ * 2 + ycent - liczbaOpcji, xcent - (xx / 2), (*it).c_str());
+//  for (it = lista.begin() ; it != lista.end() ; it++) {
+  for (auto txt : lista) {
+    mvaddstr(nrPom++ * 2 + ycent - liczbaOpcji, xcent - (xx / 2), txt.c_str());
   }
 
   ramkaWokolMenu();
