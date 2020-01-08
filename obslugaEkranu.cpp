@@ -50,12 +50,12 @@ void pokaz_w_kolorze() {
 //--------------------------------------------------------
 
 void proba_bold_oraz_F1() {
-  mvaddstr(0, 0, "Type any character to see it in bold\n");
+  mvaddstr(0, 0, "Podaj jakikolwiek symbol by ujrzec go podswietlonym\n");
   char ch = getch();/* If raw() hadn't been called
 		* we have to press enter before it
 		* gets to the program */
 
-  mvaddstr(1, 0, "The pressed key is ");
+  mvaddstr(1, 0, "Nacisniety klawisz to byl: ");
   attron(A_BOLD);
   mvaddch(2, 0, ch);
   attroff(A_BOLD);

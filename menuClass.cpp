@@ -4,12 +4,16 @@
 #include <stdarg.h>
 
 #include "menuClass.h"
-
+#define ZNAK_ENTER 10
+//w ncurses zwykly <Enter> to 10, numeryczny <Enter> to KEY_ENTER
+//TODO: mozna ewentualnie dodac warunek jeszcze or na KEY_ENTER
+//jako osobna procedure
 //--------------------------------
 MenuClass::MenuClass() {
   liczbaOpcji = 0;
   nrOpcjiWyjscia = -1;  // Na poczatku nie masz takowej :)
   wersjaMenu = wmStandardowe;
+  aktualnaOpcja = 1;
 }
 //--------------------------------
 void MenuClass::ustawienieWersji(WersjaMenu wersja) {
@@ -62,6 +66,8 @@ MenuClass::~MenuClass() {
 }
 //--------------------------------
 bool MenuClass::dobryZnak(int znak) {
+  if (znak == KEY_UP || znak == KEY_DOWN || znak == ZNAK_ENTER || znak == KEY_ENTER)
+    return true;
   int dolnyZnak, gornyZnak;
   dolnyZnak = '1';
   gornyZnak = '1' + liczbaOpcji - 1;
@@ -77,8 +83,14 @@ bool MenuClass::dobryZnak(int znak) {
 }
 //--------------------------------
 int MenuClass::wybranaOpcja(int znak) {
+  if (znak == ZNAK_ENTER || znak == KEY_ENTER) {
+    if (nrOpcjiWyjscia < 0 || nrOpcjiWyjscia + 1 != aktualnaOpcja) {
+      return aktualnaOpcja - 1;
+    } else {
+      return - 1;
+    }
+  }
   int odp = znak - '1';
-
   if (nrOpcjiWyjscia < 0) {
     return odp;
   } else {
@@ -136,7 +148,15 @@ void MenuClass::wyswietlenie() {
 
 //  for (it = lista.begin() ; it != lista.end() ; it++) {
   for (auto txt : lista) {
+    bool wylaczABold = false;
+    if (nrPom + 1 == aktualnaOpcja) {
+      attron(A_BOLD);
+      wylaczABold = true;
+    }
     mvaddstr(nrPom++ * 2 + ycent - liczbaOpcji, xcent - (xx / 2), txt.c_str());
+    if (wylaczABold) {
+      attroff(A_BOLD);
+    }
   }
 
   ramkaWokolMenu();
@@ -146,16 +166,32 @@ int MenuClass::Run() {
   if (!liczbaOpcji) {
     return -1;
   }
-
-  wyswietlenie();
   int znak;
-
-  while (!dobryZnak(znak = getch())) {};
-
+  do {
+    wyswietlenie();
+    /*TODO: nie robic za kazdym nacisnieciem strzalki
+    rysowania na nowo calego menu tylko uaktualnic zmienione dwa wiersze
+    (podswietlenia)*/
+    while (!dobryZnak(znak = getch())) {};
+    if (liczbaOpcji && znak == KEY_DOWN) {
+      aktualnaOpcja = (aktualnaOpcja % liczbaOpcji) + 1;
+    }
+    if (liczbaOpcji && znak == KEY_UP) {
+      aktualnaOpcja = ((aktualnaOpcja - 1) % liczbaOpcji);
+      if (!aktualnaOpcja)
+        aktualnaOpcja = liczbaOpcji;
+    }
+  } while (znak == KEY_UP || znak == KEY_DOWN);
   return wybranaOpcja(znak);
 }
 //---------------------------------
 void MenuClass::dodajWieleOpcji(int ile, char *p...) {
+/*
+z jakis niejasnych dla mnie powodow w gcc trzeba pierwsza
+opcje w tej metodzie zadac pusta, wiec na przyklad
+tak: dodajWieleOpcji(3, "", "pierwsza", "druga", "trzecia");
+W przypadku np. vc jest to zbedne (przy tym samym kodzie!)
+*/
     va_list vl;
 	va_start(vl, ile);
 	for (int liczba = 0; liczba < ile; liczba++) {

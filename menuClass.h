@@ -17,6 +17,7 @@ public:
 private:
   typedef list<string> listaLancuchow;
   listaLancuchow lista;
+  int aktualnaOpcja;
 
   int getMaxDlugoscOpcji();
   void ramkaWokolMenu();
