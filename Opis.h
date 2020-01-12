@@ -12,6 +12,7 @@ class Opis
     public:
         Opis(const string &tresc);
         virtual ~Opis();
+        void pokaz();
 //opcje tesowe, TODO: dumpWektor przeniesc do osobnej klasy diagnostycznej!
         static void dumpWektorStringowNaEkran(const vector<string> &vv);
         void dumpWierszeNaEkran();

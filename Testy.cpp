@@ -40,6 +40,23 @@ void Testy::probaMenuZWielokrotnymiOpcjami() {
 }
 //--------------------------
 void Testy::opcjaTestowa() {
-  Opis oo("uno|dos|tres");
-  oo.dumpWierszeNaEkran();
+  Opis oo("Lorem ipsum dolor sit amet"
+    "|consectetur adipiscing elit."
+    "|In rhoncus elementum justo nec maximus."
+    "|Nam ac blandit purus."
+    "|Donec euismod ac nisi eget egestas."
+    "|Cras in turpis vestibulum, vestibulum mi sed, viverra arcu."
+    "|Duis sollicitudin massa lobortis porta laoreet."
+    "|Proin aliquam mollis lacinia."
+    "|Aenean tincidunt lacus quam, in porta velit vulputate ac."
+    "|Aenean vel nisi sem."
+    "|Vestibulum vitae nibh a erat vestibulum sollicitudin at vitae risus."
+    "|Etiam ut eleifend ligula, eu congue leo."
+    "|Sed eleifend blandit sapien, vel posuere enim."
+    "|Donec sagittis ligula ac turpis venenatis blandit."
+    "|Pellentesque magna nunc, cursus at dui ac,"
+    "|agittis hendrerit erat."
+    "|Sed luctus velit quis tempor gravida.");
+  //oo.dumpWierszeNaEkran();
+  oo.pokaz();
 }
