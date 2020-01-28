@@ -27,7 +27,8 @@ OBJ =\
 	dwa_cztery_siedem.o\
 	menuClass.o\
 	Testy.o\
-	Opis.o
+	Opis.o\
+	PrzykladSzablonLista.o
 
 all: main
 

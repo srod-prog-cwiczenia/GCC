@@ -7,6 +7,7 @@
 #include "przyklady2.h"
 #include "biblioteczneFunkcje.h"
 #include "biblioteczneEkran.h"
+#include "PrzykladSzablonLista.h"
 #include "menuClass.h"
 
 using namespace std;
@@ -165,6 +166,18 @@ void Przyklady2::autowskazniki() {
     unique_ptr<KlasaRejestrujaca> uPtr(new KlasaRejestrujaca);
     uPtr->metoda();
   }
+  OknoAplikacji::powrotDoNCurses(true);
+}
+//----------------------------------------------------------------
+void Przyklady2::przykladSzablonu() {
+  OknoAplikacji::powrotDoTrybuTekstowego();
+
+  SzablonLista<string> vv;
+  string txt1 = "Ala";
+  vv.add(txt1);
+  string txt2 = "As";
+  vv.add(txt2);
+
   OknoAplikacji::powrotDoNCurses(true);
 }
 //----------------------------------------------------------------

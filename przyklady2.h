@@ -6,4 +6,5 @@ class Przyklady2 {
      static void wbudowaneStale();
      static void konstrucjaPointerToMember();
      static void autowskazniki();
+     static void przykladSzablonu();
 };
